@@ -1,5 +1,7 @@
 package carRental;
 
+import lombok.extern.slf4j.Slf4j;
+
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -8,6 +10,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+@Slf4j
 public class Main {
 
     private static EntityManagerFactory entityManagerFactory;
@@ -25,17 +28,17 @@ public class Main {
 
 
         try (var connection = DriverManager.getConnection ("jdbc:mysql://localhost:3306/project_rents", "admin", "Password1");){
-            System.out.println("Sucessfully connected to database.");
+
+            log.info("Successfully connected to database.");
+
 
         } catch (SQLException e) {
-            System.out.println("Something went wrong.");
+            log.error("Something went wrong.");
+
         }
 
 
     }
-
-
-
 
 
 
