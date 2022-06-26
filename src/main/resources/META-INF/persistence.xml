@@ -14,7 +14,7 @@
             <property name='hibernate.format_sql' value='true'/>
         </properties>
     </persistence-unit>
-    <persistence-unit name="mysql-library" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="mysql-project_rents" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <class>pl.sda.library.common.BookDetails</class>
         <class>pl.sda.library.common.Category</class>
