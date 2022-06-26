@@ -2,11 +2,9 @@ package carRental;
 
 import lombok.extern.slf4j.Slf4j;
 
-import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
