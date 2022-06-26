@@ -10,6 +10,14 @@ import java.sql.SQLException;
 public class CustomersJpaRepository implements CustomersRepository {
 
     private final EntityManager entityManager;
+
+    @Override
+    public void createCustomer(Customers customer) throws SQLException {
+        entityManager.getTransaction().begin();
+        entityManager.persist(customer);
+        entityManager.getTransaction().commit();
+    }
+
     @Override
     public void deleteCustomerByIdAndPassword(String id, String customer_password) throws SQLException {
 
