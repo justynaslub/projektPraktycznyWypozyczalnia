@@ -16,8 +16,12 @@ public class Main {
 
     public static void main(String[] args) throws SQLException {
 
-    entityManagerFactory = Persistence.createEntityManagerFactory("mysql-project_rents");
-    entityManager = entityManagerFactory.createEntityManager();
+        entityManagerFactory = Persistence.createEntityManagerFactory("mysql-project_rents");
+        entityManager = entityManagerFactory.createEntityManager();
+        customersRepository = new CustomersJpaRepository(entityManager);
+
+        entityManager.close();
+        entityManagerFactory.close();
 
 
         try (var connection = DriverManager.getConnection ("jdbc:mysql://localhost:3306/project_rents", "admin", "Password1");){
