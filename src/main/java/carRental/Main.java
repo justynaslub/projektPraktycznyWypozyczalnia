@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Scanner;
 
 @Slf4j
 public class Main {
@@ -23,7 +24,25 @@ public class Main {
         entityManager = entityManagerFactory.createEntityManager();
         customersRepository = new CustomersJpaRepository(entityManager);
 
-        testCreateCustomer();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Wpisz 1 aby się zarejestrować lub 2 jeśli masz już konto i chcesz się zalogować");
+        System.out.println();
+        int login = scanner.nextInt();
+
+        switch (login) {
+            case 1:
+                if (login == 1) {
+                    System.out.println("Podaj dane do rejestracji: ");
+                } break;
+            case 2:
+                if (login == 2) {
+                    System.out.println("Podaj swój login i hasło: ");
+                } break;
+
+        }
+
+
+        //testCreateCustomer();
 
         entityManager.close();
         entityManagerFactory.close();
