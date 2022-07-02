@@ -28,17 +28,23 @@ public class Main {
 
 
         try (var connection = DriverManager.getConnection ("jdbc:mysql://localhost:3306/project_rents", "admin", "Password1");){
-
+            var statement = connection.createStatement();
             log.info("Successfully connected to database.");
+
+            statement.execute(SQLs.CREATE_TEST_TABLE);
+            statement.execute(SQLs.INSERT_SIMPLE_TEST);
+
+            statement.execute(SQLs.INSERT_CUSTOMERS);
+
+
 
 
         } catch (SQLException e) {
             log.error("Something went wrong.");
+            e.printStackTrace();
 
         }
 
     }
-
-
 
 }

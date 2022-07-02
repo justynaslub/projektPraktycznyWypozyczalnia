@@ -24,5 +24,4 @@ public class Customers {
     private String phone_number;
     private String customer_email;
     private int licence;
-
 }
