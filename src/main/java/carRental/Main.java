@@ -2,13 +2,13 @@ package carRental;
 
 import lombok.extern.slf4j.Slf4j;
 
-import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 @Slf4j
 public class Main {
@@ -23,6 +23,8 @@ public class Main {
         entityManager = entityManagerFactory.createEntityManager();
         customersRepository = new CustomersJpaRepository(entityManager);
 
+        testCreateCustomer();
+
         entityManager.close();
         entityManagerFactory.close();
 
@@ -31,20 +33,27 @@ public class Main {
             var statement = connection.createStatement();
             log.info("Successfully connected to database.");
 
-            statement.execute(SQLs.CREATE_TEST_TABLE);
-            statement.execute(SQLs.INSERT_SIMPLE_TEST);
-
-            statement.execute(SQLs.INSERT_CUSTOMERS);
-
-
-
-
         } catch (SQLException e) {
             log.error("Something went wrong.");
             e.printStackTrace();
 
         }
 
+    }
+
+
+
+    private static void testCreateCustomer() throws SQLException {
+        var customer = new Customers();
+        customer.setId("jan123");
+        customer.setCustomer_password("jan123");
+        customer.setFirst_name("Jan");
+        customer.setLast_name("Kowalski");
+        customer.setBirth_date(LocalDate.of(1990,12,01));
+        customer.setPhone_number("123456789");
+        customer.setCustomer_email("jan@gmail.com");
+        customer.setLicence(2);
+        customersRepository.createCustomer(customer);
     }
 
 }

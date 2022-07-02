@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @AllArgsConstructor
@@ -13,7 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "cars")
 
-public class Cars {
+public class Cars extends BaseEntity {
     private String licence_plate;
     private String car_brand;
     private String car_model;

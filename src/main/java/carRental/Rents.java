@@ -14,9 +14,9 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "rents")
 
-public class Rents {
+public class Rents extends BaseEntity {
 
-    private int id;
+    private String id;
     private String rented_car;
     private String renting_customer;
     private Timestamp rent_date;
