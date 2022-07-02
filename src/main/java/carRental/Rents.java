@@ -22,4 +22,5 @@ public class Rents {
     private Timestamp rent_date;
     private Timestamp return_date;
     private double rent_cost;
+
 }
