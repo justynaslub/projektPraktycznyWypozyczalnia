@@ -22,13 +22,12 @@ public class Main {
         entityManager = entityManagerFactory.createEntityManager();
         customersRepository = new CustomersJpaRepository(entityManager);
 
-        testCreateCustomer();
 
         entityManager.close();
         entityManagerFactory.close();
 
 
-        try (var connection = DriverManager.getConnection ("jdbc:mysql://localhost:3306/project_rents", "admin", "Password1");){
+        try (var connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/project_rents", "admin", "Password1");) {
             var statement = connection.createStatement();
             log.info("Successfully connected to database.");
 
@@ -37,7 +36,6 @@ public class Main {
             e.printStackTrace();
 
         }
-
     }
 
 

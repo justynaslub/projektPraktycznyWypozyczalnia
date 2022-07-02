@@ -6,11 +6,12 @@ import lombok.Setter;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+@MappedSuperclass
 @Getter
 @Setter
-@MappedSuperclass
-public abstract class BaseEntity {
+abstract class BaseEntity {
 
     @Id
     protected String id;
 }
+
