@@ -1,6 +1,7 @@
 package carRental;
 
-import javax.persistence.Entity;
+import lombok.extern.slf4j.Slf4j;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -9,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+@Slf4j
 public class Main {
 
     private static EntityManagerFactory entityManagerFactory;
@@ -22,40 +24,36 @@ public class Main {
         customersRepository = new CustomersJpaRepository(entityManager);
 
 
-
-
-        try (var connection = DriverManager.getConnection ("jdbc:mysql://localhost:3306/project_rents", "admin", "Password1");){
-            System.out.println("Sucessfully connected to database.");
-
-        } catch (SQLException e) {
-            System.out.println("Something went wrong.");
-        }
-
         testCreateCustomer();
 
         entityManager.close();
         entityManagerFactory.close();
 
+
+
+        try (var connection = DriverManager.getConnection ("jdbc:mysql://localhost:3306/project_rents", "admin", "Password1");){
+            var statement = connection.createStatement();
+            log.info("Successfully connected to database.");
+
+        } catch (SQLException e) {
+            log.error("Something went wrong.");
+            e.printStackTrace();
+
     }
+
+
 
     private static void testCreateCustomer() throws SQLException {
         var customer = new Customers();
-        customer.setId("jan1234");
-        customer.setCustomer_password("jan1234");
+        customer.setId("jan123");
+        customer.setCustomer_password("jan123");
         customer.setFirst_name("Jan");
-        customer.setLst_name("Kowalski");
-        customer.setBirth_date(LocalDate.of(1990,4,20));
+        customer.setLast_name("Kowalski");
+        customer.setBirth_date(LocalDate.of(1990,12,01));
         customer.setPhone_number("123456789");
-        customer.setCustomer_email("jan.kowalski@gmail.com");
+        customer.setCustomer_email("jan@gmail.com");
         customer.setLicence(2);
         customersRepository.createCustomer(customer);
-
-
     }
-
-
-
-
-
 
 }
