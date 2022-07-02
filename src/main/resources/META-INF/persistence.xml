@@ -16,10 +16,7 @@
     </persistence-unit>
     <persistence-unit name="mysql-project_rents" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        <class>pl.sda.library.common.BookDetails</class>
-        <class>pl.sda.library.common.Category</class>
-        <class>pl.sda.library.common.Author</class>
-        <class>pl.sda.library.common.Rent</class>
+        <class>carRental.Customers</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
