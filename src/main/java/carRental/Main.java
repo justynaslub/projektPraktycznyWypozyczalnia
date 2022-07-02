@@ -48,11 +48,11 @@ public class Main {
                     System.out.printf("Podaj dzień urodzenia: ");
                     int birth_day = scanner.nextInt();
                     scanner.nextLine();
-                    System.out.printf("Podaj swój numer telefonu w formacie: 456789456: ");
+                    System.out.printf("Podaj swój numer telefonu w formacie 456789456: ");
                     String phone_number = scanner.nextLine();
                     System.out.printf("Podaj swój email: ");
                     String customer_email = scanner.nextLine();
-                    System.out.printf("Podaj kategorię prawa jazdy: 1 - A \n 2 - B \n 3 - C \n 4 - D+E");
+                    System.out.printf("Podaj kategorię prawa jazdy: \n1 - A \n 2 - B \n 3 - C \n 4 - D+E: \n");
                     int licence = scanner.nextInt();
                     testCreateCustomer(login, password, first_name, last_name, birth_year, birth_month, birth_day, phone_number, customer_email, licence);
                 } break;
