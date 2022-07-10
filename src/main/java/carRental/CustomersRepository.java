@@ -12,5 +12,6 @@ public interface CustomersRepository {
     void updatePassword (String customer_password) throws SQLException;
     void updateLicence (int licence) throws SQLException;
     void updatePhoneNumber (int phone_number) throws SQLException;
-   List<Cars> getAllCars () throws SQLException;
+
+    List<Customers> getAllCustomers()throws SQLException;
 }

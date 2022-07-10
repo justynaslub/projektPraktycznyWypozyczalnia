@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
-import javax.persistence.TypedQuery;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -16,9 +15,7 @@ public class CustomersJpaRepository implements CustomersRepository {
     private final EntityManager entityManager;
 
     @Override
-
     public void createCustomer(Customers customer) throws SQLException {
-
         try {
             entityManager.getTransaction().begin();
             entityManager.persist(customer);
@@ -60,13 +57,7 @@ public class CustomersJpaRepository implements CustomersRepository {
     }
 
     @Override
-    public List<Cars> getAllCars() throws SQLException {
-       var selectAllCars = """
-               select new carRental.Cars(c.licence_plate, c.car_brand, c.car_model,
-               c.car_category, c.car_fuel, c.car_color, c.cost_per_day)
-               from Cars c
-               """;
-        var query = entityManager.createQuery(selectAllCars, Cars.class);
-        return query.getResultList();
+    public List<Customers> getAllCustomers() throws SQLException{
+        return null;
     }
 }
