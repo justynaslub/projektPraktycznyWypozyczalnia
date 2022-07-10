@@ -8,6 +8,7 @@ import javax.persistence.Persistence;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 
 @Slf4j
@@ -31,30 +32,7 @@ public class Main {
         switch (logowanie) {
             case 1:
                 if (logowanie == 1) {
-                    System.out.println("Podaj dane do rejestracji.");
-                    scanner.nextLine();
-                    System.out.println("Podaj swój login:");
-                    String login = scanner.nextLine();
-                    System.out.printf("Podaj swoje hasło: ");
-                    String password = scanner.nextLine();
-                    System.out.printf("Podaj swoje imię: ");
-                    String first_name = scanner.nextLine();
-                    System.out.printf("Podaj swoje nazwisko: ");
-                    String last_name = scanner.nextLine();
-                    System.out.printf("Podaj rok urodzenia: ");
-                    int birth_year = scanner.nextInt();
-                    System.out.printf("Podaj miesiąc urodzenia: ");
-                    int birth_month = scanner.nextInt();
-                    System.out.printf("Podaj dzień urodzenia: ");
-                    int birth_day = scanner.nextInt();
-                    scanner.nextLine();
-                    System.out.printf("Podaj swój numer telefonu w formacie 456789456: ");
-                    String phone_number = scanner.nextLine();
-                    System.out.printf("Podaj swój email: ");
-                    String customer_email = scanner.nextLine();
-                    System.out.printf("Podaj kategorię prawa jazdy: \n1 - A \n 2 - B \n 3 - C \n 4 - D+E: \n");
-                    int licence = scanner.nextInt();
-                    testCreateCustomer(login, password, first_name, last_name, birth_year, birth_month, birth_day, phone_number, customer_email, licence);
+                    registration(scanner);
                 } break;
             case 2:
                 if (logowanie == 2) {
@@ -83,6 +61,46 @@ public class Main {
 
     }
 
+    private static void registration(Scanner scanner) throws SQLException {
+        List<CustomerBasicInfo> allCustomers = customersRepository.getAllCustomers();
+        String login;
+        System.out.println("Podaj dane do rejestracji.");
+        scanner.nextLine();
+        int i;
+        do {
+            i = 0;
+            System.out.println("Podaj swój login:");
+            login = scanner.nextLine();
+            for (CustomerBasicInfo customerBasicInfo : allCustomers) {
+                if (login.equals(customerBasicInfo.getId())) {
+                    System.out.println("Podany login już istnieje");
+                    i = 1;
+                }
+            }
+
+        } while (i == 1);
+
+        System.out.printf("Podaj swoje hasło: ");
+        String password = scanner.nextLine();
+        System.out.printf("Podaj swoje imię: ");
+        String first_name = scanner.nextLine();
+        System.out.printf("Podaj swoje nazwisko: ");
+        String last_name = scanner.nextLine();
+        System.out.printf("Podaj rok urodzenia: ");
+        int birth_year = scanner.nextInt();
+        System.out.printf("Podaj miesiąc urodzenia: ");
+        int birth_month = scanner.nextInt();
+        System.out.printf("Podaj dzień urodzenia: ");
+        int birth_day = scanner.nextInt();
+        scanner.nextLine();
+        System.out.printf("Podaj swój numer telefonu w formacie 456789456: ");
+        String phone_number = scanner.nextLine();
+        System.out.printf("Podaj swój email: ");
+        String customer_email = scanner.nextLine();
+        System.out.printf("Podaj kategorię prawa jazdy: \n1 - A \n2 - B \n3 - C \n4 - D+E: \n");
+        int licence = scanner.nextInt();
+        testCreateCustomer(login, password, first_name, last_name, birth_year, birth_month, birth_day, phone_number, customer_email, licence);
+    }
 
 
     private static void testCreateCustomer

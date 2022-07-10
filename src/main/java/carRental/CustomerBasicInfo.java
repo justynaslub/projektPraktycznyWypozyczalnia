@@ -10,7 +10,6 @@ import lombok.experimental.SuperBuilder;
 @Builder
 @AllArgsConstructor
 @ToString
-@SuperBuilder
 public class CustomerBasicInfo {
 
     private String id;
