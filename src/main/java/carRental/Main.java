@@ -63,7 +63,7 @@ public class Main {
     }
 
     private static void registration(Scanner scanner) throws SQLException {
-        List<CustomerBasicInfo> allCustomers = customersRepository.getAllCustomers();
+        List<CustomerBasicInfo> allCustomers = customersRepository.getAllCustomersId();
         String login;
         System.out.println("Podaj dane do rejestracji.");
         scanner.nextLine();

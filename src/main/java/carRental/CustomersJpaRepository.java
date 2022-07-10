@@ -57,9 +57,9 @@ public class CustomersJpaRepository implements CustomersRepository {
     }
 
     @Override
-    public List<CustomerBasicInfo> getAllCustomers() throws SQLException{
+    public List<CustomerBasicInfo> getAllCustomersId() throws SQLException{
         var selectAllCustomers = """
-                select carRental.CustomerBasicInfo(cd.id, cd.customer_email)
+                select new carRental.CustomerBasicInfo(cd.id, cd.customer_email)
                 from Customers cd
                 """;
         var query = entityManager.createQuery(selectAllCustomers,CustomerBasicInfo.class);
