@@ -6,6 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import java.sql.SQLException;
+import java.util.List;
+
 @Slf4j
 @RequiredArgsConstructor
 public class CustomersJpaRepository implements CustomersRepository {
@@ -52,5 +54,10 @@ public class CustomersJpaRepository implements CustomersRepository {
     @Override
     public void updatePhoneNumber(int phone_number) throws SQLException {
 
+    }
+
+    @Override
+    public List<Customers> getAllCustomers() throws SQLException{
+        return null;
     }
 }
