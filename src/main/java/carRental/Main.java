@@ -5,6 +5,10 @@ import lombok.extern.slf4j.Slf4j;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -33,15 +37,17 @@ public class Main {
         switch (logowanie) {
             case 1:
                 if (logowanie == 1) {
-                    registration(scanner);
+                    System.out.println("Otwieram panel rejestracyjny. Uzupełnij dane i zatwierdź formularz aby utworzyć nowe konto.");
+                    RegistrationForm registrationForm = new RegistrationForm(null);
                 } break;
             case 2:
                 if (logowanie == 2) {
-                    System.out.println("Podaj swój login i hasło: ");
+                    System.out.println("Uruchamiam interfejs użytkownika... Zaloguj się.");
+                    LoginForm loginForm = new LoginForm(null);
+
                 } break;
 
         }
-
 
 
 
@@ -62,6 +68,8 @@ public class Main {
 
     }
 
+    //poprzedni kod - w razie co :)
+    /*
     private static void registration(Scanner scanner) throws SQLException {
         List<CustomerBasicInfo> allCustomers = customersRepository.getAllCustomersId();
         String login;
@@ -119,5 +127,6 @@ public class Main {
         customersRepository.createCustomer(customer);
         System.out.printf("Konto utworzone. \nTwój login i hasło: %s, %s.", login, password);
     }
+     */
 
 }

@@ -18,12 +18,12 @@ import java.time.LocalDate;
 
 
 public class Customers extends BaseEntity {
-    private String first_name;
-    private String last_name;
-    private LocalDate birth_date;
-    private String phone_number;
-    private int licence;
-    private String customer_password;
-    private String customer_email;
+    public String first_name;
+    public String last_name;
+    public LocalDate birth_date;
+    public String phone_number;
+    public int licence;
+    public String customer_password;
+    public String customer_email;
 
 }

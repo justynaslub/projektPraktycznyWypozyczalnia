@@ -12,7 +12,8 @@ import lombok.experimental.SuperBuilder;
 @ToString
 public class CustomerBasicInfo {
 
-    private String id;
-    private String customer_email;
+    public String id;
+    public String customer_email;
+    //private String customer_password;
 
 }
